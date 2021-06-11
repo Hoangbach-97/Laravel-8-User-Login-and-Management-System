@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import"~bootstrap/scss/bootstrap";
+
+
+$background: #f7f8f9;
+$text: #16af37;
+$navBar: #1E2632;
+
+body {
+    background-color:  $background;
+    color: $text;
+}
+
+.navbar {
+    background-color: $navBar;
+    // box-shadow: horizon-shadow, vertical-shadow, blur, spread, color;
+    box-shadow:0 5px 10px 0 rgba(200, 200, 200, 0.3) ;
+    a{
+        color: white;
+    }
+}
