@@ -18,6 +18,8 @@ class CreateRoleUserTable extends Migration
             // $table->unsignedBigInteger('role_id');
             // // reference id on he user table
             // $table->unsignedBigInteger('user_id');
+            // Trong Laravel: Tự động liên kết khóa ngoại khi đặt tên theo tiêu chuẩn: 
+            // ví dụ: table role_user có trường user_id: thì nó sẽ liên kết với id của table user
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->timestamps();

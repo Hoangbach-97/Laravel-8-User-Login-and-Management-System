@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+// Dung resource thi khong dung duoc syntax [UserController::class, 'fucntion']
+// What is resource here? Hoang bach answer
+Route::resource('/admin/users', UserController::class);
