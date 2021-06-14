@@ -7,7 +7,7 @@
    value={{old('name')}} @isset($user){{ $user->name }} @endisset>
  </div>
      @error('name')
-     <span class="invalid-feedback" role= "alert">{{$message}}</span>
+     <span style="color: rgb(218, 9, 9)" role= "alert">{{$message}}</span>
      @enderror
   
  <div class="mb-3">
@@ -17,7 +17,7 @@
    </div>
 
      @error('email')
-     <span class="invalid-feedback"  role= "alert">{{$message}}</span>
+     <span style="color: rgb(218, 9, 9)" role= "alert">{{$message}}</span>
      @enderror 
 
      {{-- Nếu là create thì hiện form input passwword --}}
@@ -29,9 +29,20 @@
         </div>
 
         @error('password')
-        <span class="invalid-feedback"  role= "alert"> {{$message}} </span>
+        <span style="color: rgb(218, 9, 9)"  role= "alert"> {{$message}} </span>
 
         @enderror
+
+        
+        <div class="mb-3">
+          <label for="password_confirmation" class="form-label">Password Confirmation</label>
+          <input name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation">
+          </div>
+  
+          @error('password_confirmation')
+          <span style="color: rgb(218, 9, 9)"  role= "alert"> {{$message}} </span>
+  
+          @enderror
 
     @endisset
 

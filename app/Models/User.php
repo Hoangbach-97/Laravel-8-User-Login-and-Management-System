@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -33,9 +33,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function setPasswordAttribute($password){
-        $this->attributes['password'] = Hash::make($password);
-    }
+    // VÌ DÙNG CREATENEWUSER CỦA FORTIFY PACKAGE NÊN TA SẼ COMMENT PHẦN NÀY
+    // public function setPasswordAttribute($password){
+    //     $this->attributes['password'] = Hash::make($password);
+    // }
     /**
      * The attributes that should be cast to native types.
      *
@@ -48,4 +49,22 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany('App\Models\Role');
     }
+
+    /** Check if the user has a role
+     * @param string $role
+     * @return boolean
+     */
+    public function hasAnyRole(string $role){
+        return null !== $this->roles()->where('name', $role)->first();
+    }
+
+       /** Check if the user has any given role
+     * @param array $role
+     * @return boolean
+     */
+    public function hasAnyRoles(array $role){
+        return null !== $this->roles()->whereIn('name', $role)->first();
+    }
+  
 }
+

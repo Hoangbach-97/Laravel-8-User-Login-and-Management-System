@@ -16,7 +16,7 @@
       </div>
 
         @error('email')
-        <span class="invalid-feedback"  role= "alert">{{$message}}</span>
+        <span style="color: rgb(218, 9, 9)"  role= "alert">{{$message}}</span>
         @enderror 
 
     <div class="mb-3">
@@ -25,10 +25,12 @@
     </div>
 
     @error('password')
-    <span class="invalid-feedback"  role= "alert">{{$message}}</span>
+    <span style="color: rgb(218, 9, 9)"  role= "alert">{{$message}}</span>
     @enderror
 
     <button type="submit" class="btn btn-primary">Login</button>
+
   </form>
+  <a href="{{ route('password.request') }}">Forgotten Password? Reset Password?!</a>
 
 @endsection

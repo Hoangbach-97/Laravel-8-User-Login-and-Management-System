@@ -32,25 +32,6 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#22">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
-                  </li>
-                  {{-- class 'dropdown' is not exist in Bt5.0 --}}
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#dd" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#1">Action</a></li>
-                      <li><a class="dropdown-item" href="#2">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  
                 </ul>
                 <div class="d-flex">
                    
@@ -58,7 +39,7 @@
                             <div >
             
                                 @auth
-                                    <a href="{{ url('/home') }}" >Home</a>
+                                    <a href="{{ route('user.profile') }}" >Profile</a>
                                     {{--What is event.preventDefault vaf submit()?  --}}
                                     {{--jQuery event.preventDefault(): Mục đích: Ngăn chặn mở một liên kết URL --}}
                                     {{--jQuery submit(): Hàm submit một sự kiện/The submit event occurs when a form is submitted. --}}
@@ -68,9 +49,6 @@
                                     <form action="{{route('logout')}}" method="post" id="logout-form">
                                         @csrf
                                     </form>
-
-
-
                                     @else
                                     <a href="{{ route('login') }}" >Log in</a>
             
@@ -89,12 +67,34 @@
             </div>
           </nav>
        
-            
-
+          {{-- Nếu Gate chưa log in thì không hiển thị sub-nav --}}
+          @can('logged-in')
+          <nav class="navbar navbar-expand-lg sub-nav" style="background-color:white; " >
+            <div class="container">
+              
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+                  <li class="nav-item">
+                    <a class="nav-link active" style="color: black" aria-current="page" href="#22">Home</a>
+                  </li>
+                  @can('is-admin')
+                  <li class="nav-item">
+                    <a class="nav-link" style="color: black" href="{{ route('admin.users.index') }}">Users</a>
+                  </li>
+                  @endcan
+                  {{-- class 'dropdown' is not exist in Bt5.0 --}}
+               
+                </ul>
+              
+              </div>
+            </div>
+          </nav>
+          @endcan
         <main class="container mt-4">
+          {{-- Flash notifications --}}
+          @include('notifications.alert')
             @yield('content')
         </main>
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> --}}
 <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" ></script>
     </body>
