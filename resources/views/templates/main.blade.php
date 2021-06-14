@@ -19,6 +19,7 @@
 
         <!-- JS -->
         {{-- Defer loading javascript: It loads at the end of the page load --}}
+        
     </head>
 
     <body>
@@ -35,7 +36,7 @@
                     <a class="nav-link active" aria-current="page" href="#22">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#11">Users</a>
+                    <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
                   </li>
                   {{-- class 'dropdown' is not exist in Bt5.0 --}}
                   <li class="nav-item dropdown">
@@ -94,6 +95,7 @@
             @yield('content')
         </main>
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> --}}
+<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" ></script>
     </body>
 </html>

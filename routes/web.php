@@ -20,4 +20,21 @@ Route::get('/', function () {
 
 // Dung resource thi khong dung duoc syntax [UserController::class, 'fucntion']
 // What is resource here? Hoang bach answer
-Route::resource('/admin/users', UserController::class);
+// Route::resource('/producttest', UserController::class);
+
+// Route for testing purposes
+// Route::view('test', 'usertest');
+
+// **************** ADMIN  ****************
+Route::prefix('admin')->name('admin.')->group(function() {
+    Route::resource('/users', UserController::class);
+
+});
+
+
+// Route::group([
+//     'name'=>'admin.',
+//     'prefix'=>'admin',
+// ],function() {
+//     Route::resource('/users', UserController::class);
+// });

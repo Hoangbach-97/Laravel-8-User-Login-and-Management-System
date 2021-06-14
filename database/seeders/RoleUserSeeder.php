@@ -24,6 +24,8 @@ class RoleUserSeeder extends Seeder
             // function each, attach, pluck
             // Từ relationship roles() lấy ngẫu nhiên từng cái X trong Role model: X ở đây là id trong table roles
             // pluck() là method của Collection trong Laravel:  lấy toàn bộ id có trong bản ghi in this case
+
+            // Pivot tables and many-to-many relationships trong Laravel
             $user->roles()->attach($roles->random(1)->pluck('id'));
         });
 
